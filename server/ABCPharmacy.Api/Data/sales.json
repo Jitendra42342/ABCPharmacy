@@ -1,1 +1,12 @@
-[]
+[
+  {
+    "id": 1,
+    "medicineId": 2,
+    "medicineName": "Azithromycin 250mg",
+    "quantity": 1,
+    "unitPrice": 120.00,
+    "totalAmount": 120.00,
+    "soldAtUtc": "2026-09-17T07:41:52.3840863Z",
+    "soldBy": "jitendra"
+  }
+]

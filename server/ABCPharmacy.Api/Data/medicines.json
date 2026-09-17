@@ -13,7 +13,7 @@
     "fullName": "Azithromycin 250mg",
     "notes": "Antibiotic - prescription required",
     "expiryDate": "2027-03-17T00:00:00",
-    "quantity": 7,
+    "quantity": 6,
     "price": 120.00,
     "brand": "HealthCare"
   },
@@ -25,5 +25,14 @@
     "quantity": 50,
     "price": 85.75,
     "brand": "WellLife"
+  },
+  {
+    "id": 4,
+    "fullName": "Dolo",
+    "notes": "it is used for fever",
+    "expiryDate": "2026-09-30T00:00:00",
+    "quantity": 10,
+    "price": 20,
+    "brand": "Dolo"
   }
 ]

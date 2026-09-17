@@ -108,7 +108,9 @@ th {
   font-size: 13px;
 }
 
-.expiry-row { background: #ffdede; }
+.expiry-row {
+    background: #e61c1c;
+}
 .low-stock-row { background: #fff3bd; }
 
 .legend {
