@@ -8,5 +8,25 @@
     "totalAmount": 120.00,
     "soldAtUtc": "2026-09-17T07:41:52.3840863Z",
     "soldBy": "jitendra"
+  },
+  {
+    "id": 2,
+    "medicineId": 4,
+    "medicineName": "Dolo",
+    "quantity": 1,
+    "unitPrice": 20,
+    "totalAmount": 20,
+    "soldAtUtc": "2026-09-17T08:19:16.2326459Z",
+    "soldBy": "jitendra kumat"
+  },
+  {
+    "id": 3,
+    "medicineId": 5,
+    "medicineName": "Vitamin E 200mg",
+    "quantity": 1,
+    "unitPrice": 15,
+    "totalAmount": 15,
+    "soldAtUtc": "2026-09-17T09:52:15.670639Z",
+    "soldBy": "jit"
   }
 ]

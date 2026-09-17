@@ -31,8 +31,17 @@
     "fullName": "Dolo",
     "notes": "it is used for fever",
     "expiryDate": "2026-09-30T00:00:00",
-    "quantity": 10,
+    "quantity": 9,
     "price": 20,
     "brand": "Dolo"
+  },
+  {
+    "id": 5,
+    "fullName": "Vitamin E 200mg",
+    "notes": "Vitamin E capsule",
+    "expiryDate": "2026-12-02T00:00:00",
+    "quantity": 99,
+    "price": 15,
+    "brand": "Cipla"
   }
 ]
