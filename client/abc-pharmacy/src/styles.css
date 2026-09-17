@@ -1,0 +1,11 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f6f9;
+  color: #17212b;
+}
+button:focus, input:focus, select:focus, textarea:focus {
+  outline: 2px solid #9dbbd6;
+  outline-offset: 1px;
+}

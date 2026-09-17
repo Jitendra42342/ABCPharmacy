@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "fullName": "Paracetamol 500mg",
+    "notes": "Pain and fever relief",
+    "expiryDate": "2026-10-07T00:00:00",
+    "quantity": 25,
+    "price": 35.50,
+    "brand": "ABC Pharma"
+  },
+  {
+    "id": 2,
+    "fullName": "Azithromycin 250mg",
+    "notes": "Antibiotic - prescription required",
+    "expiryDate": "2027-03-17T00:00:00",
+    "quantity": 7,
+    "price": 120.00,
+    "brand": "HealthCare"
+  },
+  {
+    "id": 3,
+    "fullName": "Vitamin C 500mg",
+    "notes": "Supplement",
+    "expiryDate": "2027-09-17T00:00:00",
+    "quantity": 50,
+    "price": 85.75,
+    "brand": "WellLife"
+  }
+]

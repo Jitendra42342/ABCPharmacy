@@ -1,0 +1,162 @@
+<header class="topbar">
+  <div>
+    <h1>ABC Pharmacy</h1>
+    <p>Medicine inventory & sales management</p>
+  </div>
+</header>
+
+<main class="container">
+  @if (message) {
+    <div class="alert success">{{ message }}</div>
+  }
+  @if (error) {
+    <div class="alert error">{{ error }}</div>
+  }
+
+  <nav class="tabs">
+    <button [class.active]="activeTab === 'medicines'" (click)="activeTab='medicines'">
+      Medicines
+    </button>
+    <button [class.active]="activeTab === 'sales'" (click)="activeTab='sales'; loadSales()">
+      Sales
+    </button>
+  </nav>
+
+  @if (activeTab === 'medicines') {
+    <section class="card">
+      <div class="section-title">
+        <div>
+          <h2>Medicine Inventory</h2>
+          <span>{{ medicines.length }} medicine(s)</span>
+        </div>
+        <div class="search">
+          <input [(ngModel)]="search" placeholder="Search medicine name..." />
+          <button (click)="loadMedicines()">Search</button>
+        </div>
+      </div>
+
+      <div class="legend">
+        <span><i class="red"></i> Expiry within 30 days</span>
+        <span><i class="yellow"></i> Quantity below 10</span>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Medicine Name</th>
+              <th>Expiry Date</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Brand</th>
+              <th>Sale</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (medicine of medicines; track medicine.id) {
+              <tr [class]="rowClass(medicine)">
+                <td>{{ medicine.fullName }}</td>
+                <td>{{ medicine.expiryDate | date:'dd-MMM-yyyy' }}</td>
+                <td>{{ medicine.quantity }}</td>
+                <td>₹{{ medicine.price | number:'1.2-2' }}</td>
+                <td>{{ medicine.brand }}</td>
+                <td>
+                  <button class="small-btn" (click)="selectMedicineForSale(medicine.id)"
+                          [disabled]="medicine.quantity === 0">Sell</button>
+                </td>
+              </tr>
+            } @empty {
+              <tr><td colspan="6" class="empty">No medicines found.</td></tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Add Medicine</h2>
+      <form [formGroup]="medicineForm" (ngSubmit)="addMedicine()" class="form-grid">
+        <label>Full Name *
+          <input formControlName="fullName" placeholder="e.g. Paracetamol 500mg" />
+        </label>
+        <label>Brand *
+          <input formControlName="brand" placeholder="Brand" />
+        </label>
+        <label>Expiry Date *
+          <input type="date" formControlName="expiryDate" />
+        </label>
+        <label>Quantity *
+          <input type="number" formControlName="quantity" min="0" />
+        </label>
+        <label>Price *
+          <input type="number" formControlName="price" min="0" step="0.01" />
+        </label>
+        <label class="wide">Notes
+          <textarea formControlName="notes" rows="3" placeholder="Optional notes"></textarea>
+        </label>
+        <div class="actions wide">
+          <button class="primary" type="submit">Add Medicine</button>
+        </div>
+      </form>
+    </section>
+  }
+
+  @if (activeTab === 'sales') {
+    <section class="card">
+      <h2>Record Medicine Sale</h2>
+      <form [formGroup]="saleForm" (ngSubmit)="recordSale()" class="form-grid sale-form">
+        <label>Medicine *
+          <select formControlName="medicineId">
+            <option [ngValue]="0">-- Select medicine --</option>
+            @for (medicine of medicines; track medicine.id) {
+              <option [ngValue]="medicine.id">
+                {{ medicine.fullName }} (Stock: {{ medicine.quantity }})
+              </option>
+            }
+          </select>
+        </label>
+        <label>Quantity *
+          <input type="number" formControlName="quantity" min="1" />
+        </label>
+        <label>Sold By
+          <input formControlName="soldBy" />
+        </label>
+        <div class="actions">
+          <button class="primary" type="submit">Record Sale</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Sales History</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>Medicine</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Total</th>
+              <th>Sold By</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (sale of sales; track sale.id) {
+              <tr>
+                <td>{{ sale.soldAtUtc | date:'dd-MMM-yyyy HH:mm' }}</td>
+                <td>{{ sale.medicineName }}</td>
+                <td>{{ sale.quantity }}</td>
+                <td>₹{{ sale.unitPrice | number:'1.2-2' }}</td>
+                <td>₹{{ sale.totalAmount | number:'1.2-2' }}</td>
+                <td>{{ sale.soldBy }}</td>
+              </tr>
+            } @empty {
+              <tr><td colspan="6" class="empty">No sales recorded.</td></tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+  }
+</main>
